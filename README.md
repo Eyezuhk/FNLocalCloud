@@ -53,7 +53,7 @@ You can download and run the FNLocal agent in two different ways:
 
 If you're on Windows and don't have Python installed, you can simply download and run the portable executable:
 
-1. Download the FNLocal.zip file from [here](https://github.com/Eyezuhk/FNLocalCloud/releases/download/v1.0.0/FNLocal.exe).
+1. Download the FNLocal.exe file from [here](https://github.com/Eyezuhk/FNLocalCloud/releases/download/v1.0.0/FNLocal.exe).
 
 2. Extract the contents of the FNLocal.zip file to a location on your system.
 
