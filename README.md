@@ -7,10 +7,36 @@ FNLocalCloud is a tool that facilitates the exposure of local services using a p
 - TCP Proxy
 
 ## How to Use
-[Instructions for installation and usage of your program.]
+To set up and use FNLocalCloud, follow these steps:
+
+1. **Download the Setup Script**:
+
+   Download the `setup_fncloud.sh` script from the repository.
+
+   ```bash
+   wget https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/setup_fncloud.sh
+
+2. **Run the Setup Script**: 
+
+    Execute the setup script with root privileges.
+   The setup script will prompt you to enter the port numbers for the agent and client.
+
+   If you don't provide any input, it will use default values (80 for the agent port and 443 for the client port).  
+
+   ```bash
+   sudo chmod +x setup_fncloud.sh
+   sudo ./setup_fncloud.sh
+
+4. Access Your Services
+
+   Once the FNLocalCloud service is running, you can access your services using the specified ports.
+
+   By default, the agent listens on port 80 and the client listens on port 443.
+
+   If you've chosen different ports during setup, use those instead.
 
 ## Authors
-Eyezuhk
+Eyezuhk - https://www.linkedin.com/in/isaacfn/
 
 ## Future Improvements
 - Graphical interface to configure IP, buffer, port, etc.
