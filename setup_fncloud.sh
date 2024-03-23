@@ -108,7 +108,7 @@ After=network.target
 [Service]
 User=ubuntu
 Environment=HOME=/home/ubuntu
-ExecStart=/usr/bin/python3 /usr/local/bin/FNCloud.py > /var/log/fncloud/output_server.log 2>&1
+ExecStart=/usr/bin/sudo /usr/bin/python3 /usr/local/bin/FNCloud.py > /var/log/fncloud/output_server.log 2>&1
 Restart=always
 
 [Install]
@@ -121,6 +121,9 @@ systemctl daemon-reload || { echo "Failed to reload the systemd daemon."; exit 1
 # Enable and start the service
 systemctl enable fncloud.service || { echo "Failed to enable the fncloud.service."; exit 1; }
 systemctl start fncloud.service || { echo "Failed to start the fncloud.service."; exit 1; }
+
+# Sleep for 1 second
+sleep 1
 
 # Check the status of the service
 systemctl status fncloud.service
