@@ -7,7 +7,7 @@ FNLocalCloud is a tool that facilitates the exposure of local services using a p
 - TCP Proxy
 
 ## How to Use
-To set up and use FNLocalCloud, follow these steps on Ubuntu:
+To set up and use FNCloud, follow these steps on Ubuntu:
 
 1. **Download the Setup Script**:
 
@@ -38,6 +38,28 @@ To set up and use FNLocalCloud, follow these steps on Ubuntu:
    
    Remember to open the chosen ports on your cloud provider.
 
+### Downloading and Running the FNLocal Agent
+
+You can download and run the FNLocal agent in two different ways:
+
+#### Using the FNLocal.py Python File
+
+1. Ensure you have Python installed on your system.
+2. Download the FNLocal.py file from the repository.
+3. Open a terminal or command prompt and navigate to the directory where the FNLocal.py file is located.
+4. Run the FNLocal agent by executing the command:
+
+#### Running the Portable Executable
+
+If you're on Windows and don't have Python installed, you can simply download and run the portable executable:
+
+1. Download the FNLocal.zip file from [here](https://github.com/Eyezuhk/FNLocalCloud/files/14732842/FNLocal.zip).
+
+2. Extract the contents of the FNLocal.zip file to a location on your system.
+
+3. Navigate to the extracted directory and run the portable executable to start the FNLocal agent.
+
+Make sure to open any necessary ports on your firewall to allow connections to the FNLocal agent.
 
 ## Removing FNCloud Service
 
