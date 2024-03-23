@@ -18,7 +18,7 @@ BUFFER_SIZE = 256 * 1024
 TEST_DATA_SIZE = 1024 * 1024  # 1 MB
 TEST_INTERVAL = 5  # 5 seconds
 
-CONFIG_FILE = 'fncloud_config.json'
+CONFIG_FILE = 'fnlocal_config.json'
 
 def forward_data(source_socket, destination_socket):
     try:
@@ -152,6 +152,7 @@ root.title("FNCloud Configuration")
 
 # Load configuration
 config = load_config()
+
 if config:
     server_address = config.get('server_address', 'YOUR_SERVER_IP')
     server_port = config.get('server_port', 80)
@@ -174,7 +175,6 @@ if config:
         taskbar_icon.withdraw()
         taskbar_icon.iconwindow()
         taskbar_icon.deiconify()
-
 else:
     server_address = 'YOUR_SERVER_IP'
     server_port = 80
