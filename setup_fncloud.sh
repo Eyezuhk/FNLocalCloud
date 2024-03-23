@@ -8,6 +8,22 @@ is_root() {
     fi
 }
 
+# Function to install Python if not already installed
+install_python() {
+    if ! command -v python3 >/dev/null 2>&1; then
+        echo "Python3 is not installed. Installing Python3..."
+        apt-get update
+        apt-get install -y python3
+        if ! command -v python3 >/dev/null 2>&1; then
+            echo "Failed to install Python3. Please install it manually and rerun the script."
+            exit 1
+        fi
+    fi
+}
+
+# Check if Python is installed and install if necessary
+install_python
+
 # Check dependencies
 check_dependencies() {
     dependencies=("wget" "sed" "iptables" "netfilter-persistent")
