@@ -24,6 +24,10 @@ install_python() {
 # Check if Python is installed and install if necessary
 install_python
 
+# Print Python version information
+python_version=$(python3 --version 2>&1)
+echo "Python version: $python_version"
+
 # Check dependencies
 check_dependencies() {
     dependencies=("wget" "sed" "iptables" "netfilter-persistent")
