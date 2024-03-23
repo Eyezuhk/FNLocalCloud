@@ -1,4 +1,26 @@
 # FNLocalCloud
-FNLocalCloud é uma ferramenta que facilita a exposição de serviços locais utilizando um servidor de nuvem privado. Oferecendo uma conexão direta entre o serviço local e a nuvem, elimina a dependência de soluções de terceiros, como o ngrok. Com uma interface intuitiva, simplifica a configuração e garante acesso contínuo aos aplicativos e serviços. É uma escolha ideal para desenvolvimento, teste e demonstração de projetos, permitindo compartilhar e colaborar de forma eficiente e segura. 
 
+## Description
+FNLocalCloud is a tool that facilitates the exposure of local services using a private cloud server. Offering a direct connection between the local service and the cloud, it eliminates the dependency on third-party solutions like ngrok. With an intuitive interface, it simplifies setup and ensures continuous access to applications and services. It's an ideal choice for development, testing, and project demonstrations, enabling efficient and secure sharing and collaboration.
 
+## Main Features
+- TCP Proxy
+
+## How to Use
+[Instructions for installation and usage of your program.]
+
+## Authors
+Eyezuhk
+
+## Future Improvements
+Graphical interface to configure IP, buffer, port, etc.
+Portable executable
+Support for multiple clients
+Encryption
+Authentication
+Security Tests
+Acknowledgments
+Claude <3
+
+## License
+GNU General Public License v3.0 (GNU GPLv3)
