@@ -104,7 +104,7 @@ def main(server_address, server_port, local_port):
 
         except Exception as e:
             logging.error(f'Error in main loop: {e}')
-            time.sleep(2)  # Retry after 5 seconds
+            time.sleep(2)  # Retry after 2 seconds
 
 def load_config():
     if os.path.exists(CONFIG_FILE):
