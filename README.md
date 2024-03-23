@@ -89,8 +89,6 @@ This script will prompt you to enter the port numbers for the agent and client i
 Eyezuhk - https://www.linkedin.com/in/isaacfn/
 
 ## Future Improvements
-- Graphical interface to configure IP, buffer, port, etc.
-- Portable executable
 - Support for multiple clients
 - Encryption
 - Authentication
