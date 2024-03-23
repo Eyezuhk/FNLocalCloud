@@ -26,7 +26,8 @@ To set up and use FNLocalCloud, follow these steps:
    ```bash
    sudo chmod +x setup_fncloud.sh
    sudo ./setup_fncloud.sh
-
+   ```
+   
 4. Access Your Services
 
    Once the FNLocalCloud service is running, you can access your services using the specified ports.
@@ -34,6 +35,30 @@ To set up and use FNLocalCloud, follow these steps:
    By default, the agent listens on port 80 and the client listens on port 443.
 
    If you've chosen different ports during setup, use those instead.
+
+## Removing FNCloud Service
+
+To remove the FNCloud service, associated files, and firewall rules, follow these steps:
+
+1. **Download the Removal Script**: Download the remove_fncloud.sh script from the repository.
+
+   ```bash
+   wget https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/remove_fncloud.sh
+   ```
+   
+2. **Make the Script Executable: Make the script executable with the following command:
+
+   ```bash
+   chmod +x remove_fncloud.sh
+   ```
+
+3. **Execute the Script: Execute the script with root privileges using the following command:
+
+   ```bash
+   sudo ./remove_fncloud.sh
+   ```
+
+This script will prompt you to enter the port numbers for the agent and client if they were changed during setup. It will then validate the input and remove the FNCloud service, associated files, and firewall rules accordingly.
 
 ## Authors
 Eyezuhk - https://www.linkedin.com/in/isaacfn/
