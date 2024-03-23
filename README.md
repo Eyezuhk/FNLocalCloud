@@ -13,14 +13,15 @@ FNLocalCloud is a tool that facilitates the exposure of local services using a p
 Eyezuhk
 
 ## Future Improvements
-Graphical interface to configure IP, buffer, port, etc.
-Portable executable
-Support for multiple clients
-Encryption
-Authentication
-Security Tests
-Acknowledgments
-Claude <3
+- Graphical interface to configure IP, buffer, port, etc.
+- Portable executable
+- Support for multiple clients
+- Encryption
+- Authentication
+- Security Tests
+
+## Acknowledgments
+Claude.ai <3
 
 ## License
 GNU General Public License v3.0 (GNU GPLv3)
