@@ -199,7 +199,6 @@ After=network.target
 [Service]
 User=$current_user
 Environment=HOME=/home/$current_user
-#ExecStart=/usr/bin/sudo /usr/bin/python3 /usr/local/bin/FNCloud.py > /var/log/fncloud/output_server.log 2>&1
 ExecStart=/usr/bin/python3 /usr/local/bin/FNCloud.py > /var/log/fncloud/output_server.log 2>&1
 Restart=always
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
