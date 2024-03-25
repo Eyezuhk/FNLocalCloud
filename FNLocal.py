@@ -164,6 +164,19 @@ def create_gui():
         local_port = config.get('local_port', 3389)
         buffer_size = config.get('buffer_size', 256)
         protocol = config.get('protocol', 'RAW')
+
+        global BUFFER_SIZE
+        BUFFER_SIZE = buffer_size * 1024  # Buffer size in bytes
+
+        print(f"Server Address: {server_address}")
+        print(f"Server Port: {server_port}")
+        print(f"Local Port: {local_port}")
+        print(f"Protocol: {protocol}")
+        print(f"Buffer Size: {BUFFER_SIZE // 1024} KB")
+
+        # Start the main function with the loaded configuration
+        main_thread = threading.Thread(target=main, args=(server_address, server_port, local_port, protocol))
+        main_thread.start()
     else:
         server_address = 'YOUR_SERVER_IP'
         server_port = 80
