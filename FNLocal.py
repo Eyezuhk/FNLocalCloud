@@ -6,6 +6,7 @@ import threading
 import time
 import os
 import json
+import argparse
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -222,5 +223,28 @@ def create_gui():
 
     root.mainloop()
 
+def parse_args():
+    parser = argparse.ArgumentParser(description='FNCloud Configuration Options')
+    parser.add_argument('-sa', '--server_address', type=str, help='Server Address')
+    parser.add_argument('-sp', '--server_port', type=int, help='Server Port')
+    parser.add_argument('-lp', '--local_port', type=int, help='Local Port')
+    parser.add_argument('-bs', '--buffer_size', type=int, help='Buffer Size (KB)')
+    parser.add_argument('-p', '--protocol', type=str, help='Protocol')
+    return parser.parse_args()
+
 if __name__ == '__main__':
-    create_gui()
+    args = parse_args()
+
+    if not any(vars(args).values()):
+        config = load_config()
+        if config:
+            server_address = config.get('server_address')
+            server_port = config.get('server_port')
+            local_port = config.get('local_port')
+            buffer_size = config.get('buffer_size')
+            protocol = config.get('protocol')
+            main(server_address, server_port, local_port, protocol)
+        else:
+            create_gui()
+    else:
+        main(args.server_address, args.server_port, args.local_port, args.protocol)
