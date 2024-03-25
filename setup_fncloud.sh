@@ -40,6 +40,9 @@ is_root() {
     fi
 }
 
+# Check if the user is root
+is_root
+
 # Cleanup function
 cleanup() {
     echo "Cleaning up..."
@@ -52,41 +55,8 @@ cleanup() {
     echo "Cleanup complete."
 }
 
-# Trap the exit signal and call the cleanup function
-trap cleanup EXIT
-
-# Check if the user is root
-is_root
-
-# Function to install Python if not already installed
-install_python() {
-    if ! command -v python3 >/dev/null 2>&1; then
-        echo "Python3 is not installed. Installing Python3..."
-        if [ -x "$(command -v apt-get)" ]; then
-            apt-get update
-            apt-get install -y python3
-        elif [ -x "$(command -v yum)" ]; then
-            yum install -y python3
-        elif [ -x "$(command -v zypper)" ]; then
-            zypper install -y python3
-        else
-            echo "Could not find an appropriate package manager to install Python3."
-            echo "Please install Python3 manually and rerun the script."
-            exit 1
-        fi
-        if ! command -v python3 >/dev/null 2>&1; then
-            echo "Failed to install Python3. Please install it manually and rerun the script."
-            exit 1
-        fi
-    fi
-}
-
-# Check if Python is installed and install if necessary
-install_python
-
-# Print Python version information
-python_version=$(python3 --version 2>&1)
-echo "Python version: $python_version"
+# Trap the exit signal and call the cleanup function on error or interrupt
+trap 'cleanup; exit' ERR INT TERM
 
 # Check dependencies
 check_dependencies() {
@@ -120,6 +90,39 @@ check_dependencies() {
     fi
 }
 
+# Check dependencies
+check_dependencies
+
+# Function to install Python if not already installed
+install_python() {
+    if ! command -v python3 >/dev/null 2>&1; then
+        echo "Python3 is not installed. Installing Python3..."
+        if [ -x "$(command -v apt-get)" ]; then
+            apt-get update
+            apt-get install -y python3
+        elif [ -x "$(command -v yum)" ]; then
+            yum install -y python3
+        elif [ -x "$(command -v zypper)" ]; then
+            zypper install -y python3
+        else
+            echo "Could not find an appropriate package manager to install Python3."
+            echo "Please install Python3 manually and rerun the script."
+            exit 1
+        fi
+        if ! command -v python3 >/dev/null 2>&1; then
+            echo "Failed to install Python3. Please install it manually and rerun the script."
+            exit 1
+        fi
+    fi
+}
+
+# Check if Python is installed and install if necessary
+install_python
+
+# Print Python version information
+python_version=$(python3 --version 2>&1)
+echo "Python version: $python_version"
+
 # Validate port input
 validate_port() {
     local port="$1"
@@ -137,9 +140,6 @@ AGENT_PORT="${AGENT_PORT_INPUT:-80}"
 read -p "Enter the port number for the client (default: 443): " CLIENT_PORT_INPUT
 validate_port "$CLIENT_PORT_INPUT"
 CLIENT_PORT="${CLIENT_PORT_INPUT:-443}"
-
-# Check dependencies
-check_dependencies
 
 # Download the program from GitHub
 if ! wget -O FNCloud.py https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/FNCloud.py; then
