@@ -54,7 +54,14 @@ You can download and run the FNLocal agent in two different ways:
 2. Download the FNLocal.py file from the repository.
 3. Open a terminal or command prompt and navigate to the directory where the FNLocal.py file is located.
 4. Run the FNLocal agent by executing the command:
-
+   ```bash
+   python FNLocal.py -sa [Server Address] -sp [Server Port] -l [Local Port] -bs [Buffer Size] -p [Protocol]
+   ```
+   Here's an example of how you can use the parameters:
+   ```bash
+   python FNLocal.py -sa 8.8.8.8 -sp 80 -l 3389 -bs 256 -p RDP
+   ```
+   
 #### Running the Portable Executable
 
 If you're on Windows and don't have Python installed, you can simply download and run the portable executable:
@@ -64,8 +71,10 @@ If you're on Windows and don't have Python installed, you can simply download an
 2. Extract the contents of the FNLocal.zip file to a location on your system.
 
 3. Navigate to the extracted directory and run the portable executable to start the FNLocal agent.
-
-Make sure to open any necessary ports on your firewall to allow connections to the FNLocal agent.
+4. Additionally, you can start the agent with parameters using the following format: 
+   ```bash
+   FNLocal.exe -sa [Server Address] -sp [Server Port] -l [Local Port] -bs [Buffer Size] -p [Protocol]
+   ```
 
 ## Removing FNCloud Service
 
