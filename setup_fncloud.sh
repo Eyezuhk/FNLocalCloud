@@ -8,6 +8,9 @@ is_root() {
     fi
 }
 
+# Check if the user is root
+is_root
+
 # Function to install Python if not already installed
 install_python() {
     if ! command -v python3 >/dev/null 2>&1; then
@@ -66,9 +69,6 @@ AGENT_PORT="${AGENT_PORT_INPUT:-80}"
 read -p "Enter the port number for the client (default: 443): " CLIENT_PORT_INPUT
 validate_port "$CLIENT_PORT_INPUT"
 CLIENT_PORT="${CLIENT_PORT_INPUT:-443}"
-
-# Check if the user is root
-is_root
 
 # Check dependencies
 check_dependencies
