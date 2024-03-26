@@ -56,13 +56,13 @@ You can download and run the FNLocal agent in two different ways:
 4. Run the FNLocal agent by executing the command:
    
    ```bash
-   python FNLocal.py -sa [Server Address] -sp [Server Port] -l [Local Port] -bs [Buffer Size] -p [Protocol]
+   python FNLocal.py -sa [Server Address] -sp [Server Port] -lp [Local Port] -bs [Buffer Size] -p [Protocol]
    ```
    
    Here's an example of how you can use the parameters:
    
    ```bash
-   python FNLocal.py -sa 8.8.8.8 -sp 80 -l 3389 -bs 256 -p RDP
+   python FNLocal.py -sa 8.8.8.8 -sp 80 -lp 3389 -bs 256 -p RDP
    ```
    
 #### Running the Portable Executable
@@ -74,7 +74,7 @@ If you're on Windows and don't have Python installed, you can simply download an
 2. Additionally, you can start the agent with parameters using the following format:
 
    ```bash
-   FNLocal.exe -sa [Server Address] -sp [Server Port] -l [Local Port] -bs [Buffer Size] -p [Protocol]
+   FNLocal.exe -sa [Server Address] -sp [Server Port] -lp [Local Port] -bs [Buffer Size] -p [Protocol]
    ```
    
 If you don't provide any parameters, the program will check if there's any saved configuration to start with; if not, it will open a window for you to input the parameters. However, it's important to note that when using parameters, they won't be saved in the JSON configuration file.
