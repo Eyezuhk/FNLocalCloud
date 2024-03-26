@@ -36,9 +36,13 @@ To set up and use FNCloud, follow these steps on Linux:
    
 4. Access Your Services
 
-   Once the FNLocalCloud service is running, you can access your services using the specified ports.
+   Once the FNLocalCloud service and FNLocal is running, you can access your services using the specified ports.
 
    By default, the agent listens on port 80 and the client listens on port 443.
+
+   ```bash
+   your_cloud_ip_adress:client_port EG.: your_cloud_ip_adress:443
+   ```
 
    If you've chosen different ports during setup, use those instead.
    
