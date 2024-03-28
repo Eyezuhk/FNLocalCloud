@@ -3,7 +3,6 @@
 ![License](https://img.shields.io/github/license/Eyezuhk/FNLocalCloud)
 [![Release](https://img.shields.io/github/release/Eyezuhk/FNLocalCloud)](https://github.com/Eyezuhk/FNLocalCloud/releases)
 [![Downloads](https://img.shields.io/github/downloads/Eyezuhk/FNLocalCloud/latest/total.svg?color=green)](https://github.com/Eyezuhk/FNLocalCloud/releases)
-[![Downloads](https://img.shields.io/github/downloads/Eyezuhk/FNLocalCloud/v1.0.1/total.svg?color=green)](https://github.com/Eyezuhk/FNLocalCloud/releases/tag/v1.0.1)
 [![TotalDownloads](https://img.shields.io/github/downloads/Eyezuhk/FNLocalCloud/total.svg?color=brightgreen)](https://github.com/Eyezuhk/FNLocalCloud)
 
 
