@@ -12,7 +12,7 @@ if %errorlevel% NEQ 0 (
 setlocal
 
 rem Define the installation directory
-set "installdir=%ProgramFiles%\FNLocal"
+set "installdir=C:\Program Files (x86)\FNLocal"
 
 rem Check if the installation directory exists, if not, create it
 if not exist "%installdir%" (
@@ -46,7 +46,7 @@ rem Create a scheduled task to start the program at system startup
 echo Creating a scheduled task to start the program at system startup...
 
 schtasks /create /tn "FNLocalStartup" /tr "\""%installdir%\FNLocal.exe\"" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART
-
+schtasks /create /tn "FNLocalStartup" /tr "\""%installdir%\FNLocal.exe\"" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART
 echo Scheduled task created successfully.
 
 endlocal
