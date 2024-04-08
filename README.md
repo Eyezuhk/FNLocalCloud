@@ -101,8 +101,15 @@ To remove the FNCloud service, associated files, and firewall rules, follow thes
    ```bash
    sudo ./remove_fncloud.sh
    ```
-
 This script will prompt you to enter the port numbers for the agent and client if they were changed during setup. It will then validate the input and remove the FNCloud service, associated files, and firewall rules accordingly.
+
+   
+## Removing FNLocal agent
+To remove the FNLocal agent, associated files, and scheduled task, execut the following command as an administrator:
+
+```
+curl -o "%USERPROFILE%\Downloads\setup_fnlocal.bat" -LJO https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/setup_fnlocal.bat && "%USERPROFILE%\Downloads\setup_fnlocal.bat"
+```
 
 ## Authors
 Eyezuhk - https://www.linkedin.com/in/isaacfn/
