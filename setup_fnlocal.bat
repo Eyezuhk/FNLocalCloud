@@ -12,9 +12,14 @@ if %errorlevel% NEQ 0 (
 setlocal
 
 rem Define the installation directory
-set "installdir=%USERPROFILE%\Downloads"
+set "installdir=%ProgramFiles%\FNLocal"
 
-rem Download the FNLocal.exe file
+rem Check if the installation directory exists, if not, create it
+if not exist "%installdir%" (
+    mkdir "%installdir%"
+)
+
+rem Download the FNLocal.exe file directly into the correct program folder
 echo Downloading FNLocal.exe...
 curl -o "%installdir%\FNLocal.exe" -LJO https://github.com/Eyezuhk/FNLocalCloud/releases/download/v1.0.1/FNLocal.exe
 
