@@ -23,6 +23,15 @@ if exist "%fnlocal_path%" (
     echo FNLocal.exe file not found.
 )
 
+rem Delete the setup_fnlocal.bat file
+if exist "%USERPROFILE%\Downloads\setup_fnlocal.bat" (
+    del "%USERPROFILE%\Downloads\setup_fnlocal.bat"
+    echo setup_fnlocal.bat file deleted.
+)
+
+rem Delete the remove_fnlocal.bat script
+del "%USERPROFILE%\Downloads\remove_fnlocal.bat" 2>nul
+
 echo FNLocalCloud setup has been removed successfully.
 
 pause
