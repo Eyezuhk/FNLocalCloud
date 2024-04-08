@@ -1,3 +1,5 @@
+@echo off
+
 rem Check if the script is running as administrator
 
 net session >nul 2>&1
