@@ -47,7 +47,6 @@ rem Delete the remove_fnlocal.bat file
 if exist "%USERPROFILE%\Downloads\remove_fnlocal.bat" (
     del "%USERPROFILE%\Downloads\remove_fnlocal.bat"
     echo remove_fnlocal.bat file deleted.
-) else (
-    echo remove_fnlocal.bat file not found.
 )
-echo FNLocalCloud agent. has been removed successfully.
+
+echo FNLocalCloud agent has been removed successfully.
