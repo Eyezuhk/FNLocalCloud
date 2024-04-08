@@ -36,7 +36,7 @@ if exist "%USERPROFILE%\Downloads\setup_fnlocal.bat" (
 )
 
 rem Delete the remove_fnlocal.bat file
-if exist "%USERPROFILE%\Downloads\removefnlocal.bat" (
+if exist "%USERPROFILE%\Downloads\remove_fnlocal.bat" (
     del "%USERPROFILE%\Downloads\remove_fnlocal.bat"
     echo remove_fnlocal.bat file deleted.
 )
