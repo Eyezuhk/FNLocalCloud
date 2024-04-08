@@ -44,7 +44,7 @@ start "" "%installdir%\FNLocal.exe" -sa %server_address% -sp %server_port% -lp %
 
 rem Create a scheduled task to start the program at system startup
 echo Creating a scheduled task to start the program at system startup...
-schtasks /create /tn "FNLocalStartup" /tr "C:\Program Files (x86)\FNLocalFNLocal.exe" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART
+schtasks /create /tn "FNLocalStartup" /tr "\""%installdir%\FNLocal.exe\"" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART
 echo Scheduled task created successfully.
 
 endlocal
