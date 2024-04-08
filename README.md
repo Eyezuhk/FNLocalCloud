@@ -108,7 +108,7 @@ This script will prompt you to enter the port numbers for the agent and client i
 To remove the FNLocal agent, associated files, and scheduled task, execut the following command as an administrator:
 
 ```
-curl -o "%USERPROFILE%\Downloads\setup_fnlocal.bat" -LJO https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/setup_fnlocal.bat && "%USERPROFILE%\Downloads\setup_fnlocal.bat"
+curl -o "%USERPROFILE%\Downloads\remove_fnlocal.bat" -LJO https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/remove_fnlocal.bat && "%USERPROFILE%\Downloads\remove_fnlocal.bat"
 ```
 
 ## Authors
