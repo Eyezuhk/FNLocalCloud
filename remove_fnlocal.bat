@@ -35,6 +35,12 @@ if exist "%USERPROFILE%\Downloads\setup_fnlocal.bat" (
     echo setup_fnlocal.bat file deleted.
 )
 
-echo FNLocalCloud setup has been removed successfully.
+rem Delete the remove_fnlocal.bat file
+if exist "%USERPROFILE%\Downloads\removefnlocal.bat" (
+    del "%USERPROFILE%\Downloads\remove_fnlocal.bat"
+    echo remove_fnlocal.bat file deleted.
+)
+
+echo FNLocalCloud agent. has been removed successfully.
 
 pause
