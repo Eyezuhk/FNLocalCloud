@@ -12,6 +12,13 @@ if %errorlevel% NEQ 0 (
 rem Get the FNLocal.exe location from the scheduled task
 for /f "tokens=3 delims=\" %%a in ('schtasks /query /tn "FNLocalStartup" ^| findstr /i "Program"') do set fnlocal_path=%%a
 
+rem Kill the FNLocal.exe process if it's running
+tasklist | findstr /i "FNLocal.exe" > nul
+if %errorlevel% == 0 (
+    taskkill /f /im FNLocal.exe
+    echo FNLocal.exe process has been terminated.
+)
+
 rem Remove the scheduled task
 schtasks /delete /tn "FNLocalStartup" /f
 
