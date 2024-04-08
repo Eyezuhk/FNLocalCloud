@@ -35,16 +35,18 @@ To set up and use FNCloud, follow these steps on Linux:
    sudo ./setup_fncloud.sh
    ```
 
-### Downloading and Running the FNLocal Agent
+## Downloading and Running the FNLocal Agent
 
 You can download and run the FNLocal agent effortlessly by executing the following command as an administrator:
 
 ```bash
 curl -o "%USERPROFILE%\Downloads\setup_fnlocal.bat" -LJO https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/setup_fnlocal.bat && "%USERPROFILE%\Downloads\setup_fnlocal.bat"
 ```
-This command will prompt you to input the server IP address, server port, and local port. It will then create a scheduled task to execute the program automatically when Windows starts.
+This command will prompt you to input the server IP address, server port, local port and protocol. 
 
-#### Using the FNLocal.py Python File
+It will then create a scheduled task to execute the program automatically when Windows starts.
+
+### Using the FNLocal.py Python File
 Ensure you have Python installed on your system.
 
 Download the FNLocal.py file from the repository.
