@@ -45,3 +45,4 @@ schtasks /create /tn "FNLocalStartup" /tr "\""%installdir%\FNLocal.exe\"" -sa %s
 echo Scheduled task created successfully.
 
 endlocal
+pause
