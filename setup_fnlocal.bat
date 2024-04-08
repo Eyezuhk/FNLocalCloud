@@ -28,10 +28,10 @@ if exist "%installdir%\FNLocal.exe" (
 
 rem Prompt the user for the required parameters
 set /p server_address="Enter the server address: "
-set /p server_port="Enter the server port: "
+set /p server_port="Enter the server port [default: 80]: "
 set /p local_port="Enter the local port: "
-set /p buffer_size="Enter the buffer size: "
-set /p protocol="Enter the protocol: "
+set /p buffer_size="Enter the buffer size in KB: "
+set /p protocol="Enter the protocol [HTTP, RDP, TCP]: "
 
 rem Execute FNLocal.exe with the provided parameters
 echo Executing FNLocal.exe...
@@ -39,7 +39,8 @@ start "" "%installdir%\FNLocal.exe" -sa %server_address% -sp %server_port% -lp %
 
 rem Create a scheduled task to start the program at system startup
 echo Creating a scheduled task to start the program at system startup...
-schtasks /create /tn "FNLocalStartup" /tr "\""%installdir%\FNLocal.exe\"" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART /ru SYSTEM
+
+schtasks /create /tn "FNLocalStartup" /tr "\""%installdir%\FNLocal.exe\"" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART
 
 echo Scheduled task created successfully.
 
