@@ -1,14 +1,18 @@
 @echo off
 
+rem Check if the script is running as administrator
+net session >nul 2>&1
+if %errorlevel% NEQ 0 (
+    echo This script requires administrator privileges.
+    echo Please run it as an administrator.
+    pause
+    exit /b 1
+)
+
 setlocal
 
 rem Define the installation directory
-set "installdir=C:\Program Files (x86)\FNLocal"
-
-rem Check if the installation directory exists, if not, create it
-if not exist "%installdir%" (
-    mkdir "%installdir%"
-)
+set "installdir=%USERPROFILE%\Downloads"
 
 rem Download the FNLocal.exe file
 echo Downloading FNLocal.exe...
@@ -19,7 +23,6 @@ if exist "%installdir%\FNLocal.exe" (
     echo FNLocal.exe downloaded successfully.
 ) else (
     echo Failed to download FNLocal.exe. Please check your internet connection and try again.
-    pause
     exit /b 1
 )
 
