@@ -50,7 +50,4 @@ if exist "%USERPROFILE%\Downloads\remove_fnlocal.bat" (
 ) else (
     echo remove_fnlocal.bat file not found.
 )
-
 echo FNLocalCloud agent. has been removed successfully.
-
-pause
