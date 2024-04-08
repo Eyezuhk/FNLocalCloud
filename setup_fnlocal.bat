@@ -1,7 +1,7 @@
-@echo off
-
 rem Check if the script is running as administrator
+
 net session >nul 2>&1
+
 if %errorlevel% NEQ 0 (
     echo This script requires administrator privileges.
     echo Please run it as an administrator.
@@ -38,14 +38,17 @@ set /p local_port="Enter the local port: "
 set /p buffer_size="Enter the buffer size in KB: "
 set /p protocol="Enter the protocol [HTTP, RDP, TCP]: "
 
-rem Execute FNLocal.exe with the provided parameters
-echo Executing FNLocal.exe...
-start "" "%installdir%\FNLocal.exe" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%
-
 rem Create a scheduled task to start the program at system startup
 echo Creating a scheduled task to start the program at system startup...
-schtasks /create /tn "FNLocalStartup" /tr "\""%installdir%\FNLocal.exe\"" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART
-echo Scheduled task created successfully.
+schtasks /create /tn "FNLocalStartup" /tr "\"%installdir%\FNLocal.exe\" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART /f
+
+if %errorlevel% equ 0 (
+    echo Scheduled task created successfully.
+) else (
+    echo Failed to create scheduled task. Error code: %errorlevel%
+    exit /b 1
+)
 
 endlocal
+
 pause
