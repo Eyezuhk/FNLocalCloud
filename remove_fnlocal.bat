@@ -9,10 +9,7 @@ if %errorlevel% NEQ 0 (
     exit /b 1
 )
 
-echo Proceeding with the removal of FNLocalCloud setup manually.
-
-rem Get the FNLocal.exe location from the scheduled task
-for /f "tokens=3 delims=\" %%a in ('schtasks /query /tn "FNLocalStartup" ^| findstr /i "Program"') do set fnlocal_path=%%a
+echo Proceeding with the removal of FNLocalCloud agent.
 
 rem Kill the FNLocal.exe process if it's running
 tasklist | findstr /i "FNLocal.exe" > nul
@@ -25,8 +22,8 @@ rem Remove the scheduled task
 schtasks /delete /tn "FNLocalStartup" /f
 
 rem Check if FNLocal.exe exists and delete it
-if exist "%fnlocal_path%\FNLocal.exe" (
-    del "%fnlocal_path%\FNLocal.exe" 2>nul
+if exist "C:\Program Files (x86)\FNLocal\FNLocal.exe" (
+    del "C:\Program Files (x86)\FNLocal\FNLocal.exe" 2>nul
     echo FNLocal.exe file deleted.
 ) else (
     echo FNLocal.exe file not found.
