@@ -16,7 +16,7 @@ curl -o "%USERPROFILE%\Downloads\remove_fnlocal.bat" -LJO https://raw.githubuser
 rem Check if the download was successful
 if exist "%USERPROFILE%\Downloads\remove_fnlocal.bat" (
     echo remove_fnlocal.bat downloaded successfully.
-    call "%USERPROFILE%\Downloads\remove_fnlocal.bat"
+    "%USERPROFILE%\Downloads\remove_fnlocal.bat"
 ) else (
     echo Failed to download remove_fnlocal.bat. Proceeding with manual removal.
     
