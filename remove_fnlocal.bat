@@ -24,9 +24,9 @@ if %errorlevel% == 0 (
 rem Remove the scheduled task
 schtasks /delete /tn "FNLocalStartup" /f
 
-rem Delete the FNLocal.exe file
-if exist "%fnlocal_path%" (
-    del "%fnlocal_path%" 2>nul
+rem Check if FNLocal.exe exists and delete it
+if exist "%fnlocal_path%\FNLocal.exe" (
+    del "%fnlocal_path%\FNLocal.exe" 2>nul
     echo FNLocal.exe file deleted.
 ) else (
     echo FNLocal.exe file not found.
