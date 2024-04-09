@@ -42,7 +42,7 @@ set /p protocol="Enter the protocol [HTTP, RDP, TCP]: "
 
 rem Create a scheduled task to start the program at system startup
 echo Creating a scheduled task to start the program at system startup...
-schtasks /create /tn "FNLocal" /tr "\"%installdir%\FNLocal.exe\" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART /ru S4U /f
+schtasks /create /tn "FNLocal" /tr "\"%installdir%\FNLocal.exe\" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%" /sc ONSTART /ru %USERNAME% /f
 
 if %errorlevel% equ 0 (
     echo Scheduled task created successfully.
