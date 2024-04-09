@@ -19,12 +19,12 @@ if %errorlevel% == 0 (
 )
 
 rem Check if the scheduled task exists, then remove it
-schtasks /query /tn "FNLocalStartup" > nul 2>&1
+schtasks /query /tn "FNLocal" > nul 2>&1
 if %errorlevel% equ 0 (
-    schtasks /delete /tn "FNLocalStartup" /f
-    echo Scheduled task "FNLocalStartup" removed.
+    schtasks /delete /tn "FNLocal" /f
+    echo Scheduled task "FNLocal" removed.
 ) else (
-    echo Scheduled task "FNLocalStartup" not found.
+    echo Scheduled task "FNLocal" not found.
 )
 
 rem Check if FNLocal.exe exists and delete it
