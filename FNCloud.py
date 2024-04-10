@@ -14,7 +14,7 @@ SERVER_ADDRESS = '0.0.0.0'  # Listens on all interfaces. You can specify if need
 CLIENT_PORT = 443  # Port for client connections. You can change.
 AGENT_PORT = 80   # Port for agent connections. You can change. If you change this, make sure to update the FNLocal file as well.
 BUFFER_SIZE = 256 * 1024  # Reduced buffer size for better performance and security
-TIMEOUT = 60  # Timeout in seconds for idle connections (5 minutes)
+TIMEOUT = 5  # Timeout in seconds for idle connections (5 seconds)
 
 def handle_connection(client_socket, agent_socket):
     """
