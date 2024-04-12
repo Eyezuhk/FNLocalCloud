@@ -23,7 +23,7 @@ if not exist "%installdir%" (
 
 rem Download the FNLocal.exe file directly into the correct program folder
 echo Downloading FNLocal.exe...
-curl -o "%installdir%\FNLocal.exe" -LJO https://github.com/Eyezuhk/FNLocalCloud/releases/download/v1.0.1/FNLocal.exe
+curl -o "%installdir%\FNLocal.exe" -LJO https://github.com/Eyezuhk/FNLocalCloud/releases/download/1.2.0/FNLocal_x64.exe
 
 rem Check if the download was successful
 if exist "%installdir%\FNLocal.exe" (
