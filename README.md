@@ -1,3 +1,5 @@
+Testing cpython to improve performance, working for linux, testing compiling with MinGW for windows.
+
 #  <img src="https://github.com/Eyezuhk/FNLocalCloud/releases/download/v1.0.0/FNLocalCloud.png" alt="FNLocalCloud" width="70" height="70" style="display: inline;">     FNLocalCloud
 ![Environment](https://img.shields.io/badge/Windows-Xp,%20Vista,%207,%208,%2010,%2011-brightgreen.svg)
 ![License](https://img.shields.io/github/license/Eyezuhk/FNLocalCloud)
