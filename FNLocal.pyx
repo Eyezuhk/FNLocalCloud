@@ -85,10 +85,10 @@ def main(server_address, server_port, local_port, buffer_size, protocol):
 def parse_args():
     parser = argparse.ArgumentParser(description='FNCloud Configuration Options')
     parser.add_argument('-sa', '--server_address', type=str, required=True, help='Server Address')
-    parser.add_argument('-sp', '--server_port', type=int, required=True, help='Server Port')
-    parser.add_argument('-lp', '--local_port', type=int, required=True, help='Local Port')
-    parser.add_argument('-bs', '--buffer_size', type=int, required=True, help='Buffer Size (KB)')
-    parser.add_argument('-p', '--protocol', type=str, required=True, help='Protocol')
+    parser.add_argument('-sp', '--server_port', type=int, default=80, help='Server Port')
+    parser.add_argument('-lp', '--local_port', type=int, required=True, default=3389,help='Local Port')
+    parser.add_argument('-bs', '--buffer_size', type=int, default=256, help='Buffer Size (KB)')
+    parser.add_argument('-p', '--protocol', type=str, default='RDP', help='Protocol')
     return parser.parse_args()
 
 # Chame parse_args() para obter os argumentos da linha de comando
