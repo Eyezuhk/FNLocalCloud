@@ -8,7 +8,7 @@ import argparse
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Initial buffer size
-BUFFER_SIZE = 256 * 1024 * 1024 # 256 Mb default
+BUFFER_SIZE = 256 * 1024 # 256 Kb default
 
 def forward_data(source_socket, destination_socket, protocol):
     try:
