@@ -179,7 +179,6 @@ EOT
 systemctl daemon-reload || { echo "Failed to reload the systemd daemon."; exit 1; }
 # Enable and start the service
 systemctl enable fncloud.service || { echo "Failed to enable the fncloud.service."; exit 1; }
-sleep 1
 systemctl start fncloud.service || { echo "Failed to start the fncloud.service."; exit 1; }
 
 echo "Setup complete."
