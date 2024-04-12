@@ -91,6 +91,4 @@ def parse_args():
     parser.add_argument('-p', '--protocol', type=str, required=True, help='Protocol')
     return parser.parse_args()
 
-if __name__ == '__main__':
-    args = parse_args()
-    main(args.server_address, args.server_port, args.local_port, args.buffer_size, args.protocol)
+main(args.server_address, args.server_port, args.local_port, args.buffer_size, args.protocol)
