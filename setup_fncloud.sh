@@ -165,7 +165,7 @@ After=network.target
 [Service]
 User=$current_user
 Environment=HOME=/home/$current_user
-ExecStart=/opt/fncloud/fncloud -cp $CLIENT_PORT -ap $AGENT_PORT > /var/log/fncloud/output_server.log 2>&1
+ExecStart=/opt/fncloud/fncloud -cp $CLIENT_PORT -ap $AGENT_PORT
 Restart=always
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_BIND_SERVICE
