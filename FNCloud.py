@@ -136,5 +136,4 @@ def main():
         client_server_socket.close()
         agent_server_socket.close()
 
-if __name__ == "__main__":
-    main()
+main()
