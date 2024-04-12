@@ -59,4 +59,6 @@ if %errorlevel% equ 0 (
 
 endlocal
 
+%installdir%\FNLocal.exe\" -sa %server_address% -sp %server_port% -lp %local_port% -bs %buffer_size% -p %protocol%"
+
 pause
