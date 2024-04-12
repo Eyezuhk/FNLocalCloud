@@ -20,3 +20,6 @@ dist/
 *.bak
 *~
 .*.swp
+
+#Others
+2brain.md
