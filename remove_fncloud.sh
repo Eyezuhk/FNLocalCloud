@@ -30,7 +30,8 @@ sudo rm /etc/systemd/system/fncloud.service
 sudo systemctl daemon-reload
 
 # Remove the program file
-sudo rm /usr/local/bin/FNCloud.py
+sudo rm /opt/fncloud/fncloud
+sudo rm -r /opt/fncloud
 
 # Remove the log directory
 sudo rm -rf /var/log/fncloud
