@@ -1,4 +1,4 @@
-#  <img src="https://github.com/Eyezuhk/FNLocalCloud/releases/download/v1.0.0/FNLocalCloud.png" alt="FNLocalCloud" width="70" height="70" style="display: inline;">     FNLocalCloud
+#  <img src="https://github.com/Eyezuhk/FNLocalCloud/releases/download/1.2.1/FNLocalCloud.png" alt="FNLocalCloud" width="70" height="70" style="display: inline;">     FNLocalCloud
 ![Environment](https://img.shields.io/badge/Windows-Xp,%20Vista,%207,%208,%2010,%2011-brightgreen.svg)
 ![License](https://img.shields.io/github/license/Eyezuhk/FNLocalCloud)
 [![Release](https://img.shields.io/github/release/Eyezuhk/FNLocalCloud)](https://github.com/Eyezuhk/FNLocalCloud/releases)
