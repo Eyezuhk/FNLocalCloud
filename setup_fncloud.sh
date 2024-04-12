@@ -184,8 +184,4 @@ systemctl start fncloud.service || { echo "Failed to start the fncloud.service."
 
 echo "Setup complete."
 
-# Sleep for 1 second
-sleep 1
-
-# Check the status of the service
-systemctl status fncloud.service
+echo "Check the status of the service systemctl status fncloud.service"
