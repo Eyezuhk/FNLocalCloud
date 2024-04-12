@@ -1,0 +1,25 @@
+# Ignore Cython-generated files
+*.c
+*.cpp
+*.so
+*.pyd
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore build directories
+build/
+dist/
+
+# Ignore log files
+*.log
+
+# Ignore temporary and backup files
+*.tmp
+*.bak
+*~
+.*.swp
+
+#Others
+2brain.md
