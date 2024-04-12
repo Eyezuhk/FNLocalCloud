@@ -51,7 +51,7 @@ cleanup() {
     netfilter-persistent save >/dev/null 2>&1
     systemctl stop fncloud.service >/dev/null 2>&1
     systemctl disable fncloud.service >/dev/null 2>&1
-    rm -rf /usr/local/bin/FNCloud.py /var/log/fncloud /etc/systemd/system/fncloud.service >/dev/null 2>&1
+    rm -rf /opt/fncloud /var/log/fncloud >/dev/null 2>&1
     echo "Cleanup complete."
 }
 
@@ -60,7 +60,7 @@ trap 'cleanup; exit' ERR INT TERM
 
 # Check dependencies
 check_dependencies() {
-    dependencies=("wget" "sed" "iptables" "netfilter-persistent")
+    dependencies=("wget" "iptables" "netfilter-persistent")
     missing_deps=()
 
     for dep in "${dependencies[@]}"; do
@@ -93,36 +93,6 @@ check_dependencies() {
 # Check dependencies
 check_dependencies
 
-# Function to install Python if not already installed
-install_python() {
-    if ! command -v python3 >/dev/null 2>&1; then
-        echo "Python3 is not installed. Installing Python3..."
-        if [ -x "$(command -v apt-get)" ]; then
-            apt-get update
-            apt-get install -y python3
-        elif [ -x "$(command -v yum)" ]; then
-            yum install -y python3
-        elif [ -x "$(command -v zypper)" ]; then
-            zypper install -y python3
-        else
-            echo "Could not find an appropriate package manager to install Python3."
-            echo "Please install Python3 manually and rerun the script."
-            exit 1
-        fi
-        if ! command -v python3 >/dev/null 2>&1; then
-            echo "Failed to install Python3. Please install it manually and rerun the script."
-            exit 1
-        fi
-    fi
-}
-
-# Check if Python is installed and install if necessary
-install_python
-
-# Print Python version information
-python_version=$(python3 --version 2>&1)
-echo "Python version: $python_version"
-
 # Validate port input
 validate_port() {
     local port="$1"
@@ -141,24 +111,20 @@ read -p "Enter the port number for the client (default: 443): " CLIENT_PORT_INPU
 validate_port "$CLIENT_PORT_INPUT"
 CLIENT_PORT="${CLIENT_PORT_INPUT:-443}"
 
+# Create the /opt/fncloud directory if it doesn't exist
+mkdir -p /opt/fncloud || { echo "Failed to create the /opt/FNCloud directory."; exit 1; }
+
 # Download the program from GitHub
-if ! wget -O FNCloud.py https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/FNCloud.py; then
-    echo "Failed to download the FNCloud.py file from GitHub."
+if ! wget -O /opt/fncloud/fncloud https://github.com/Eyezuhk/FNLocalCloud/releases/download/1.2.0/FNCloud_x86_64; then
+    echo "Failed to download the fncloud executable from GitHub."
     exit 1
 fi
 
-# Modify the downloaded file to update port configurations
-sed -i "s/CLIENT_PORT = \([0-9]*\)/CLIENT_PORT = $CLIENT_PORT/" FNCloud.py || { echo "Failed to modify the FNCloud.py file."; exit 1; }
-sed -i "s/AGENT_PORT = \([0-9]*\)/AGENT_PORT = $AGENT_PORT/" FNCloud.py || { echo "Failed to modify the FNCloud.py file."; exit 1; }
-
-# Move the program to the appropriate location
-mv FNCloud.py /usr/local/bin/ || { echo "Failed to move the FNCloud.py file to /usr/local/bin/."; exit 1; }
+# Set the correct permissions for the program
+chmod 755 /opt/fncloud/fncloud || { echo "Failed to set permissions for the FNCloud executable."; exit 1; }
 
 # Create a directory for logs
 mkdir -p /var/log/fncloud || { echo "Failed to create the /var/log/fncloud directory."; exit 1; }
-
-# Set the correct permissions for the program
-chmod 640 /usr/local/bin/FNCloud.py || { echo "Failed to set permissions for the FNCloud.py file."; exit 1; }
 
 # Get the current user
 current_user=$(whoami)
@@ -193,13 +159,13 @@ fi
 # Create the systemd service file with the specified port numbers
 cat > /etc/systemd/system/fncloud.service << EOT
 [Unit]
-Description=FNCloud
+Description=fncloud
 After=network.target
 
 [Service]
 User=$current_user
 Environment=HOME=/home/$current_user
-ExecStart=/usr/bin/python3 /usr/local/bin/FNCloud.py > /var/log/fncloud/output_server.log 2>&1
+ExecStart=/opt/fncloud/fncloud -cp $CLIENT_PORT -ap $AGENT_PORT > /var/log/fncloud/output_server.log 2>&1
 Restart=always
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_BIND_SERVICE
@@ -211,15 +177,15 @@ EOT
 
 # Reload the systemd daemon
 systemctl daemon-reload || { echo "Failed to reload the systemd daemon."; exit 1; }
-
 # Enable and start the service
 systemctl enable fncloud.service || { echo "Failed to enable the fncloud.service."; exit 1; }
+sleep 1
 systemctl start fncloud.service || { echo "Failed to start the fncloud.service."; exit 1; }
+
+echo "Setup complete."
 
 # Sleep for 1 second
 sleep 1
 
 # Check the status of the service
 systemctl status fncloud.service
-
-echo "Setup complete."
