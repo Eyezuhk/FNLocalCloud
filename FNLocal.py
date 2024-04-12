@@ -69,20 +69,18 @@ def handle_connection(agent_socket, local_port, protocol):
 def main(server_address, server_port, local_port, buffer_size, protocol):
     global BUFFER_SIZE
     BUFFER_SIZE = buffer_size  # Buffer size in bytes
-
+    
     while True:
         try:
             agent_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             agent_socket.connect((server_address, server_port))
             logging.info(f'Agent connected to server at {server_address}:{server_port}')
-
-            while True:
-                handle_connection(agent_socket, local_port, protocol)
-                #time.sleep(1)
+            handle_connection(agent_socket, local_port, protocol)
+            #while True:
 
         except Exception as e:
             logging.error(f'Error in main loop: {e}')
-            time.sleep(1)  # Retry after 1 seconds
+            time.sleep(1)  # Retry after 1 second
 
 def parse_args():
     parser = argparse.ArgumentParser(description='FNCloud Configuration Options')
