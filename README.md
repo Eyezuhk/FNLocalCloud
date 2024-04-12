@@ -18,19 +18,11 @@ To set up and use FNCloud, follow these steps on Linux:
 
 1. **Download the Setup Script**:
 
-   Download the `setup_fncloud.sh` script from the repository.
+   Download and run as root or sudo the `setup_fncloud.sh` script from the repository.
+   The setup script will prompt you to enter the port numbers for the agent and client.
 
    ```bash
    wget https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/setup_fncloud.sh
-
-2. **Run the Setup Script**: 
-
-    Execute the setup script with root privileges.
-   The setup script will prompt you to enter the port numbers for the agent and client.
-
-   If you don't provide any input, it will use default values (80 for the agent port and 443 for the client port).  
-
-   ```
    sudo chmod +x setup_fncloud.sh
    sudo ./setup_fncloud.sh
    ```
@@ -88,17 +80,7 @@ To remove the FNCloud service, associated files, and firewall rules, follow thes
 
    ```bash
    wget https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/remove_fncloud.sh
-   ```
-   
-2. Make the Script Executable: Make the script executable with the following command:
-
-   ```bash
    chmod +x remove_fncloud.sh
-   ```
-
-3. Execute the Script: Execute the script with root privileges using the following command:
-
-   ```bash
    sudo ./remove_fncloud.sh
    ```
 This script will prompt you to enter the port numbers for the agent and client if they were changed during setup. It will then validate the input and remove the FNCloud service, associated files, and firewall rules accordingly.
