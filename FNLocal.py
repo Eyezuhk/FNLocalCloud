@@ -8,11 +8,7 @@ import argparse
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Initial buffer size
-BUFFER_SIZE = 256 * 1024
-
-# Constants for connection speed testing
-TEST_DATA_SIZE = 1024 * 1024  # 1 MB
-TEST_INTERVAL = 5  # 5 seconds
+BUFFER_SIZE = 256 * 1024 * 1024 # 256 Mb default
 
 def forward_data(source_socket, destination_socket, protocol):
     try:
@@ -51,27 +47,6 @@ def forward_data(source_socket, destination_socket, protocol):
         source_socket.close()
         destination_socket.close()
 
-def test_connection_speed(agent_socket):
-    start_time = time.time()
-    agent_socket.sendall(b'x' * TEST_DATA_SIZE)
-    end_time = time.time()
-    elapsed_time = end_time - start_time
-    connection_speed = TEST_DATA_SIZE / elapsed_time
-    adjust_buffer_size(connection_speed)
-
-def adjust_buffer_size(connection_speed):
-    global BUFFER_SIZE
-    if connection_speed > 10 * 1024 * 1024:  # 10 Mbps
-        BUFFER_SIZE = 4 * 1024 * 1024  # 4 MB
-    elif connection_speed > 5 * 1024 * 1024:  # 5 Mbps
-        BUFFER_SIZE = 2 * 1024 * 1024  # 2 MB
-    elif connection_speed > 1 * 1024 * 1024:  # 1 Mbps
-        BUFFER_SIZE = 1 * 1024 * 1024  # 1 MB
-    else:
-        BUFFER_SIZE = 256 * 1024  # 256 KB
-
-    logging.info(f'Buffer size adjusted to {BUFFER_SIZE // 1024} KB based on connection speed {connection_speed:.2f} bytes/s.')
-
 def handle_connection(agent_socket, local_port, protocol):
     local_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
@@ -93,7 +68,7 @@ def handle_connection(agent_socket, local_port, protocol):
 
 def main(server_address, server_port, local_port, buffer_size, protocol):
     global BUFFER_SIZE
-    BUFFER_SIZE = buffer_size * 1024  # Buffer size in bytes
+    BUFFER_SIZE = buffer_size  # Buffer size in bytes
 
     while True:
         try:
@@ -103,12 +78,11 @@ def main(server_address, server_port, local_port, buffer_size, protocol):
 
             while True:
                 handle_connection(agent_socket, local_port, protocol)
-                test_connection_speed(agent_socket)
-                time.sleep(TEST_INTERVAL)
+                #time.sleep(1)
 
         except Exception as e:
             logging.error(f'Error in main loop: {e}')
-            time.sleep(2)  # Retry after 2 seconds
+            time.sleep(1)  # Retry after 1 seconds
 
 def parse_args():
     parser = argparse.ArgumentParser(description='FNCloud Configuration Options')
