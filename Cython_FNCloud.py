@@ -5,5 +5,4 @@ setup(
     ext_modules=cythonize("FNCloud.pyx")
 )
 
-
-#python Cython_FNCloud.py build_ext --inplace
+#python3 Cython_FNCloud.py build_ext --inplace
