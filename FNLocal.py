@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
+
 try:
-    import FNLocal
+    import FNCloud
 
     main()
 
