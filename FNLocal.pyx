@@ -91,4 +91,7 @@ def parse_args():
     parser.add_argument('-p', '--protocol', type=str, required=True, help='Protocol')
     return parser.parse_args()
 
+# Chame parse_args() para obter os argumentos da linha de comando
+args = parse_args()
+
 main(args.server_address, args.server_port, args.local_port, args.buffer_size, args.protocol)
