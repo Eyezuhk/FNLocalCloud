@@ -1,5 +1,5 @@
 try:
-    import fncloud
+    import FNLocal
 
     main()
 
