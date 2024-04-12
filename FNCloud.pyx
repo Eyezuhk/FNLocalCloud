@@ -5,14 +5,13 @@ import logging
 import select
 import signal
 import os
+import argparse
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Server configuration
-SERVER_ADDRESS = '0.0.0.0'  # Listens on all interfaces. You can specify if needed.
-CLIENT_PORT = 443  # Port for client connections. You can change.
-AGENT_PORT = 80   # Port for agent connections. You can change. If you change this, make sure to update the FNLocal file as well.
+SERVER_ADDRESS = '0.0.0.0'  # Listens on all interfaces
 BUFFER_SIZE = 256 * 1024  # Reduced buffer size for better performance and security
 TIMEOUT = 2  # Timeout in seconds for idle connections (2 seconds)
 
@@ -24,7 +23,6 @@ def handle_connection(client_socket, agent_socket):
         client_socket (socket.socket): The socket for the client connection.
         agent_socket (socket.socket): The socket for the agent connection.
     """
-
     try:
         client_socket.settimeout(TIMEOUT)
         agent_socket.settimeout(TIMEOUT)
@@ -93,23 +91,29 @@ def main():
     and establishes communication between them using handle_connection().
     """
 
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Server to forward data between client and agent.")
+    parser.add_argument("-cp","--client-port", type=int, default=443, help="Port for client connections (default: 443)")
+    parser.add_argument("-ap","--agent-port", type=int, default=80, help="Port for agent connections (default: 80)")
+    args = parser.parse_args()
+
     # Register signal handler for graceful shutdown
     signal.signal(signal.SIGINT, signal_handler)
 
     # Create the server socket for the client
     client_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    client_server_socket.bind((SERVER_ADDRESS, CLIENT_PORT))
+    client_server_socket.bind((SERVER_ADDRESS, args.client_port))
     client_server_socket.listen()
-    logging.info(f'Server started on port {CLIENT_PORT} for clients')
+    logging.info(f'Server started on port {args.client_port} for clients')
 
     # Create the server socket for the agent
     agent_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     agent_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     agent_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)  # Allow multiple sockets to bind to the same port
-    agent_server_socket.bind((SERVER_ADDRESS, AGENT_PORT))
+    agent_server_socket.bind((SERVER_ADDRESS, args.agent_port))
     agent_server_socket.listen()
-    logging.info(f'Server started on port {AGENT_PORT} for agents')
+    logging.info(f'Server started on port {args.agent_port} for agents')
 
     try:
         while True:
