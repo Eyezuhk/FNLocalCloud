@@ -183,4 +183,4 @@ systemctl start fncloud.service || { echo "Failed to start the fncloud.service."
 
 echo "Setup complete."
 
-echo "Check the status of the service systemctl status fncloud.service"
+echo "Check the status of the service with #systemctl status fncloud"
