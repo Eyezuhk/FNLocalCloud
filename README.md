@@ -16,7 +16,7 @@ FNLocalCloud is a tool that facilitates the exposure of local services using a p
 ## How to Use
 To set up and use FNCloud, follow these steps on Linux:
 
-1. **Download the Setup Script**:
+**Download the Setup Script**:
 
    Download and run as root or sudo the `setup_fncloud.sh` script from the repository.
    The setup script will prompt you to enter the port numbers for the agent and client.
