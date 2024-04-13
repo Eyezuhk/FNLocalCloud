@@ -9,11 +9,11 @@ python3 Cython_FNLocal.py build_ext --inplace
 ```
 FNCloud
 ```
-pyinstaller --onefile --icon=FNLocalCloud.ico FNCloud.py
+pyinstaller --onefile --icon=Images\FNLocalCloud.ico FNCloud.py
 ```
 FNLocal
 ```
-pyinstaller --onefile --icon=FNLocalCloud.ico FNLocal.py
+pyinstaller --onefile --icon=Images\FNLocalCloud.ico FNLocal.py
 ```
 Fix
 ```
