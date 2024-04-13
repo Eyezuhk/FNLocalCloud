@@ -7,12 +7,19 @@ python3 Cython_FNCloud.py build_ext --inplace
 ```
 python3 Cython_FNLocal.py build_ext --inplace
 ```
-```
-pyinstaller --onefile --icon=FNLocalCloud.ico FNLocal.py
-```
+FNCloud
 ```
 pyinstaller --onefile --icon=FNLocalCloud.ico FNCloud.py
 ```
+FNLocal
+```
+pyinstaller --onefile --icon=FNLocalCloud.ico FNLocal.py
+```
+Fix
+```
+pip install --upgrade pyinstaller
+```
+
 Path: 
 ```
 C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64
