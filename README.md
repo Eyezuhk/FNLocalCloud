@@ -1,4 +1,4 @@
-#  <img src="https://github.com/Eyezuhk/FNLocalCloud/releases/download/1.2.1/FNLocalCloud.png" alt="FNLocalCloud" width="70" height="70" style="display: inline;">     FNLocalCloud
+#  <img src="https://github.com/Eyezuhk/FNLocalCloud/releases/download/1.2.0/FNLocalCloud.png" alt="FNLocalCloud" width="70" height="70" style="display: inline;">     FNLocalCloud
 ![Environment](https://img.shields.io/badge/Windows-Xp,%20Vista,%207,%208,%2010,%2011-brightgreen.svg)
 ![License](https://img.shields.io/github/license/Eyezuhk/FNLocalCloud)
 [![Release](https://img.shields.io/github/release/Eyezuhk/FNLocalCloud)](https://github.com/Eyezuhk/FNLocalCloud/releases)
@@ -26,10 +26,10 @@ To set up and use FNCloud, follow these steps on Linux:
    sudo chmod +x setup_fncloud.sh
    sudo ./setup_fncloud.sh
    ```
-
+   If doesn't work, you can use the FNCloud.pyx, download and rename do .py to be interpreted by Python
 ## Downloading and Running the FNLocal Agent
 
-You can download and run the FNLocal agent effortlessly by executing the following command as an administrator:
+You can download and run the FNLocal agent effortlessly on Windows x64 by executing the following command as an administrator:
 
 ```bash
 curl -o "%USERPROFILE%\Downloads\setup_fnlocal.bat" -LJO https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/setup_fnlocal.bat && "%USERPROFILE%\Downloads\setup_fnlocal.bat"
@@ -38,24 +38,7 @@ This command will prompt you to input the server IP address, server port, local 
 
 It will then create a scheduled task to execute the program automatically when Windows starts.
 
-### Using the FNLocal.py Python File
-Ensure you have Python installed on your system.
-
-Download the FNLocal.py file from the repository.
-
-Open a terminal or command prompt and navigate to the directory where the FNLocal.py file is located.
-
-Run the FNLocal agent by executing the command:
-
- ```
-python FNLocal.py -sa [Server Address] -sp [Server Port] -lp [Local Port] -bs [Buffer Size] -p [Protocol]
- ```
-Here's an example of how you can use the parameters:
-
- ```
-python FNLocal.py -sa 8.8.8.8 -sp 80 -lp 3389 -bs 256 -p RDP
- ```
-If you don't provide any parameters, the program will check if there's any saved configuration to start with; if not, it will open a window for you to input the parameters. However, it's important to note that when using parameters, they won't be saved in the JSON configuration file.
+If doesn't work, you can use the FNLocal.pyx, download and rename do .py to be interpreted by Python
 
 ## Access Your Services
 
@@ -64,13 +47,12 @@ If you don't provide any parameters, the program will check if there's any saved
    By default, the agent listens on port 80 and the client listens on port 443.
 
    ```bash
-   your_cloud_ip_adress:client_port EG.: 8.7.6.5:443
+   your_cloud_ip_adress:client_port EG.: 127.0.0.2:443
    ```
 
-   If you've chosen different ports during setup, use those instead.
+   If you've chosen different cllient port during setup, use taht instead.
    
    Remember to open the chosen ports on your cloud provider.
-
 
 ## Removing FNCloud Service
 
