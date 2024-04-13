@@ -30,6 +30,10 @@ def handle_connection(client_socket, agent_socket):
         client_buffer = bytearray(BUFFER_SIZE)
         agent_buffer = bytearray(BUFFER_SIZE)
 
+        # Get the client's and agent's address
+        client_address = client_socket.getpeername()
+        agent_address = agent_socket.getpeername()
+        
         while True:
             # Check for incoming data from either the client or agent
             readable, _, _ = select.select([client_socket, agent_socket], [], [])
@@ -64,11 +68,11 @@ def handle_connection(client_socket, agent_socket):
                     # Close idle connections after the timeout
                     client_socket.close()
                     agent_socket.close()
-                    logging.info('Connection closed due to inactivity')
+                    logging.info(f'Connection from {client_address} closed due to inactivity')
                     return
 
     except Exception as e:
-        logging.error(f'Error handling connection: {e}')
+        logging.error(f'Error handling connection from {client_address}: {e}')
     finally:
         # Close the client and agent sockets
         client_socket.close()
@@ -93,19 +97,12 @@ def main():
 
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description="Server to forward data between client and agent.")
-    parser.add_argument("-ap","--agent-port", type=int, default=80, help="Port for agent connections (default: 80)")
-    parser.add_argument("-cp","--client-port", type=int, default=443, help="Port for client connections (default: 443)")    
+    parser.add_argument("-cp","--client-port", type=int, default=443, help="Port for client connections (default: 443)")      
+    parser.add_argument("-ap","--agent-port", type=int, default=80, help="Port for agent connections (default: 80)")  
     args = parser.parse_args()
 
     # Register signal handler for graceful shutdown
     signal.signal(signal.SIGINT, signal_handler)
-
-    # Create the server socket for the client
-    client_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    client_server_socket.bind((SERVER_ADDRESS, args.client_port))
-    client_server_socket.listen()
-    logging.info(f'Server started on port {args.client_port} for clients')
 
     # Create the server socket for the agent
     agent_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -115,6 +112,14 @@ def main():
     agent_server_socket.listen()
     logging.info(f'Server started on port {args.agent_port} for agents')
 
+    # Create the server socket for the client
+    client_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client_server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    client_server_socket.bind((SERVER_ADDRESS, args.client_port))
+    client_server_socket.listen()
+    logging.info(f'Server started on port {args.client_port} for clients')
+
+
     try:
         while True:
             # Accept incoming connections from the client and agent
@@ -123,12 +128,12 @@ def main():
             for sock in readable:
                 if sock is client_server_socket:
                     # Accept incoming connection from the client
-                    client_socket, _ = client_server_socket.accept()
-                    logging.info(f'Connection received from client')
+                    client_socket, client_address = client_server_socket.accept()
+                    logging.info(f'Connection received from client {client_address}')
 
                     # Accept incoming connection from the agent
-                    agent_socket, _ = agent_server_socket.accept()
-                    logging.info(f'Agent connected')
+                    agent_socket, agent_address = agent_server_socket.accept()
+                    logging.info(f'Agent connected from {agent_address}')
 
                     # Handle the connection between client and agent
                     handle_connection(client_socket, agent_socket)
