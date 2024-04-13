@@ -93,8 +93,8 @@ def main():
 
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description="Server to forward data between client and agent.")
-    parser.add_argument("-cp","--client-port", type=int, default=443, help="Port for client connections (default: 443)")
     parser.add_argument("-ap","--agent-port", type=int, default=80, help="Port for agent connections (default: 80)")
+    parser.add_argument("-cp","--client-port", type=int, default=443, help="Port for client connections (default: 443)")    
     args = parser.parse_args()
 
     # Register signal handler for graceful shutdown
