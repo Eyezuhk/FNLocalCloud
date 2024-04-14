@@ -2,9 +2,7 @@
 ![Environment](https://img.shields.io/badge/Windows-Xp,%20Vista,%207,%208,%2010,%2011-brightgreen.svg)
 ![License](https://img.shields.io/github/license/Eyezuhk/FNLocalCloud)
 [![Release](https://img.shields.io/github/release/Eyezuhk/FNLocalCloud)](https://github.com/Eyezuhk/FNLocalCloud/releases)
-[![Downloads](https://img.shields.io/github/downloads/Eyezuhk/FNLocalCloud/latest/total.svg?color=green)](https://github.com/Eyezuhk/FNLocalCloud/releases)
 [![TotalDownloads](https://img.shields.io/github/downloads/Eyezuhk/FNLocalCloud/total.svg?color=brightgreen)](https://github.com/Eyezuhk/FNLocalCloud)
-
 
 ## Description
 
