@@ -20,7 +20,7 @@ To set up and use FNCloud, follow these steps on Linux:
    The setup script will prompt you to enter the port numbers for the agent and client.
 
    ```bash
-   wget https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/setup_fncloud.sh
+   wget https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/source/setup_fncloud.sh
    sudo chmod +x setup_fncloud.sh
    sudo ./setup_fncloud.sh
    ```
@@ -30,7 +30,7 @@ To set up and use FNCloud, follow these steps on Linux:
 You can download and run the FNLocal agent effortlessly on Windows x64 by executing the following command as an administrator:
 
 ```bash
-curl -o "%USERPROFILE%\Downloads\setup_fnlocal.bat" -LJO https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/setup_fnlocal.bat && "%USERPROFILE%\Downloads\setup_fnlocal.bat"
+curl -o "%USERPROFILE%\Downloads\setup_fnlocal.bat" -LJO https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/source/setup_fnlocal.bat && "%USERPROFILE%\Downloads\setup_fnlocal.bat"
 ```
 This command will prompt you to input the server IP address, server port, local port and protocol. 
 
@@ -59,7 +59,7 @@ To remove the FNCloud service, associated files, and firewall rules, follow thes
 1. Download the Removal Script**: Download the remove_fncloud.sh script from the repository.
 
    ```bash
-   wget https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/remove_fncloud.sh
+   wget https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/source/remove_fncloud.sh
    chmod +x remove_fncloud.sh
    sudo ./remove_fncloud.sh
    ```
@@ -70,7 +70,7 @@ This script will prompt you to enter the port numbers for the agent and client i
 To remove the FNLocal agent, associated files, and scheduled task, execut the following command as an administrator:
 
 ```
-curl -o "%USERPROFILE%\Downloads\remove_fnlocal.bat" -LJO https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/remove_fnlocal.bat && "%USERPROFILE%\Downloads\remove_fnlocal.bat"
+curl -o "%USERPROFILE%\Downloads\remove_fnlocal.bat" -LJO https://raw.githubusercontent.com/Eyezuhk/FNLocalCloud/main/source/remove_fnlocal.bat && "%USERPROFILE%\Downloads\remove_fnlocal.bat"
 ```
 
 ## Authors
