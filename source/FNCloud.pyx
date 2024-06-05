@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Server configuration
 SERVER_ADDRESS = '0.0.0.0'  # Listens on all interfaces
-BUFFER_SIZE = 256 * 1024  # Reduced buffer size for better performance and security
+BUFFER_SIZE = 4 * 1024  # Reduced buffer size for better performance and security
 TIMEOUT = 2  # Timeout in seconds for idle connections (2 seconds)
 
 def handle_connection(client_socket, agent_socket):
