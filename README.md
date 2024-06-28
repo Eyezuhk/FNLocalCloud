@@ -8,6 +8,11 @@
 
 FNLocalCloud is a tool that facilitates the exposure of local services using a private cloud server. Offering a direct connection between the local service and the cloud, it eliminates the dependency on third-party solutions like ngrok. With an intuitive interface, it simplifies setup and ensures continuous access to applications and services. It's an ideal choice for development, testing, and project demonstrations, enabling efficient and secure sharing and collaboration.
 
+Support with BTC: 
+```
+bc1qgch352sr3pf5l9nrr5knf7ls9hac3k60uxndwr
+```
+
 ## Main Features
 - Reverse TCP Proxy
 
